@@ -1,0 +1,22 @@
+{
+  "name": "alumdonationpage",
+  "description": "donation page for Alpha Omega Epsilon - Tau chapter",
+  "main": "index.js",
+  "authors": [
+    "Elizabeth Dinella"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/elizabethdinella/alumDonationPage",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-mocks": "^1.5.7"
+  }
+}

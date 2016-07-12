@@ -1,0 +1,19 @@
+{
+  "name": "alumdonationpage",
+  "version": "1.0.0",
+  "description": "donation page for Alpha Omega Epsilon - Tau chapter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elizabethdinella/alumDonationPage.git"
+  },
+  "author": "Elizabeth Dinella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elizabethdinella/alumDonationPage/issues"
+  },
+  "homepage": "https://github.com/elizabethdinella/alumDonationPage#readme"
+}
