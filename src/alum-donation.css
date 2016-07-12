@@ -1,0 +1,14 @@
+#mainInput{
+    background-color: #f8f8f8;
+    height: 55%;
+    padding: 5%;
+}
+
+.heading{
+    padding: 5%;
+    margin: auto;
+}
+
+.input{
+    vertical-align: bottom;
+}
