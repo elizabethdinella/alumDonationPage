@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('AlumDonation').factory('AlumDonationSvc', ['$http', function($http) {
-		var alumDonationService = {};
-		return alumDonationService;
-	}]);
+angular.module('AlumDonation')
+.factory('AlumDonationSvc', ['$http', 'angularPayments', function ($http, angularPayments) {
+    var alumDonationService = {};
+    return alumDonationService;
+    }]);
+
