@@ -1,14 +1,13 @@
 angular.module('AlumDonation')
     .controller('AlumDonationCtrl', ['$scope', '$log', 'AlumDonationSvc', 'stripe', function ($scope, $log, alumDonationService, stripe) {
     
-        $scope.stepAmount = false;
-        $scope.stepCard = true;
+        $scope.pageStep = "stepAddress";
         $scope.cardNumber;
         $scope.expirationMonth;
         $scope.expirationYear;
         $scope.CVC;
+        $scope.states = usStates;
         
-
         stripeResponseHandler = function(status, response){
             $log.log(response);
         };
