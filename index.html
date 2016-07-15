@@ -36,9 +36,9 @@
                         </div>
                         <div class="form-group row input-group">
                             <div class="form-inline">
-                               <div class="input-group">
+                               <div class="input-group" ng-class="amountValid">
                                    <span class="input-group-addon">$</span>
-                                   <input class="form-control" type="number" id="amount">
+                                   <input class="form-control" type="number" id="amount" ng-model="amount">
                                    <span class="input-group-addon">.00</span>
                                </div>
                            </div>
@@ -51,17 +51,17 @@
                <!-- card info -->
                <div class="cardInfo" ng-show="pageStep === 'stepCard'">
                    <form>
-                    <div class="form-group row">
+                    <div class="form-group row" ng-class="cardValid">
                         <label for="cardNumber"> Card Number </label>
                           <input type="text" class="form-control" id="cardNumber" ng-model="cardNumber" data-stripe="number">
                       </div>
 
-                      <div class="form-group row">
+                      <div class="form-group row" ng-class="expValid">
                         <label for="expirationDate"> Expiration (MM/YY) </label>
                         <input class="form-control" type="month" ng-model="expirationDate" id="expirationDate" data-stripe="exp_date">
                       </div>
 
-                      <div class="form-group row">
+                      <div class="form-group row" ng-class="cvcValid">
                           <label for="CVC"> CVC </label>
                           <input class="form-control" type="text" id="CVC" ng-model="CVC" data-stripe="cvc">
                       </div>
@@ -73,29 +73,29 @@
                 <!-- billing address -->
                 <div class="billingAddress" ng-show="pageStep == 'stepAddress'">
                  <form>
-                     <div class="form-group row">
+                     <div class="form-group row" ng-class="nameValid">
                             <label for="name" > Name </label>
-                            <input class="form-control" type="text" id="name" ng-model="name" data-stripe="name">
+                            <input class="form-control" type="text" id="name" ng-model="name" data-stripe="name" >
                      </div>
-                     <div class="form-group row">
+                     <div class="form-group row" ng-class="addressValid">
                             <label for="addressOne" > Billing Address </label>
-                            <input class="form-control" type="text" id="addressOne" ng-model="addressOne" data-stripe="addressOne">
+                            <input class="form-control" type="text" id="addressOne" ng-model="address" data-stripe="addressOne" >
                      </div>
                      <div class="form-group row">
                             <label for="addressTwo" > Apartment / Suite </label>
                             <input class="form-control" type="text" id="addressTwo" ng-model="addressTwo" data-stripe="addressTwo">
                       </div>
-                      <div class="form-group row">
+                      <div class="form-group row" ng-class="cityValid">
                             <label for="city" > City </label>
-                            <input class="form-control" type="text" id="city" ng-model="city" data-stripe="city">
+                            <input class="form-control" type="text" id="city" ng-model="city" data-stripe="city" >
                       </div>
-                     <div class="form-group row">
+                     <div class="form-group row" ng-class="stateValid">
                          <label for="state"> State </label>
-                         <select class="form-control" id="state">
+                         <select class="form-control" id="state" ng-model="state">
                             <option ng-repeat="state in states"> {{state.abbreviation}} </option>
                          </select>
                       </div>
-                     <div class="form-group row">
+                     <div class="form-group row" ng-class="zipValid">
                             <label for="zipcode" > Zipcode </label>
                             <input class="form-control" type="text" id="zipcode" ng-model="zipcode" data-stripe="zipcode">
                       </div>
@@ -106,6 +106,7 @@
                  </form>
             </div>
         </div>
+    </div>
     </div>
 	
 	<!-- stylesheets -->
@@ -126,6 +127,7 @@
 	<script src ="./src/alum-donation-app.js"></script>
 	<script src ="./src/alum-donation-svc.js"></script>
 	<script src ="./src/alum-donation-ctrl.js"></script>
+    <script src ="./src/alum-donation-helpers.js"></script>
     <script src="./src/constants.js"></script>
         
 </body>
