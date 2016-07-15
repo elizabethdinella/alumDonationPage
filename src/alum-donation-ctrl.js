@@ -30,7 +30,12 @@ angular.module('AlumDonation')
         $scope.zipValid;
         
         stripeResponseHandler = function(status, response){
-            $log.log(response);
+            if(status == 200){
+                $log.log("collected card data successfully")
+            }else{
+                $log.log("error collecting card data");
+            }
+            
         };
         
         
@@ -52,8 +57,18 @@ angular.module('AlumDonation')
                     $scope.stateValid = getValidateClass($scope.state);
                     $scope.zipValid = getValidateClass($scope.zipcode && $scope.zipcode.length == 5);
                     return $scope.nameValid == true && $scope.addressValid == true && $scope.cityValid == true && $scope.stateValid == true && $scope.zipValid == true;
+                case "stepConfirm":
+                    return true;
             }
         }
+        
+        $scope.hiddenCard = function(){
+            if(!$scope.cardNumber){
+                return;
+            }
+            return Array($scope.cardNumber.length-5).join("*") + $scope.cardNumber.substring($scope.cardNumber.length-4, $scope.cardNumber.length);
+        }
+        
         
         $scope.next = function(){
             if(!$scope.validate()){
@@ -69,6 +84,10 @@ angular.module('AlumDonation')
                     break;
                 case "stepAddress":
                     $scope.submit();
+                    $scope.pageStep = "stepConfirm";
+                    break;
+                case "stepConfirm":
+                    $scope.charge();
             }
         }
         
@@ -79,6 +98,9 @@ angular.module('AlumDonation')
                     break;
                 case "stepAddress":
                     $scope.pageStep = "stepCard";
+                    break;
+                case "stepConfirm":
+                    $scope.pageStep = "stepAddress";
             }
         }
         

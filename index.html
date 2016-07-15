@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-4" id="mainInput">
                 <div class="heading">
-                    <h4> Donate </h4>
+                     <h4>  Donate  </h4> 
                 </div>
                 <!-- amount -->
                 <div class="amount" ng-show="pageStep === 'stepAmount'">
@@ -101,10 +101,20 @@
                       </div>
                      <div class="form-group row">
                             <button class="btn btn-primary" ng-click="back()"> Back </button>
-                            <button class="btn btn-primary" ng-click="next()"> Donate </button>
+                            <button class="btn btn-primary" ng-click="next()"> Next </button>
                      </div>
                  </form>
             </div>
+            <!-- confirmation page -->
+           <div class="confirmation" ng-show="pageStep === 'stepConfirm'">
+                <p class="text-left"> <strong> Amount: </strong> {{amount}} </p> 
+                <p class="text-left"> {{name}} </p>
+                <p class="text-left"> {{hiddenCard()}} </p>
+               <form>
+                   <button class="btn btn-primary" ng-click="back()"> Back </button>
+                   <button class="btn btn-primary" ng-click="next()"> Next </button>
+               </form>
+           </div>
         </div>
     </div>
     </div>
