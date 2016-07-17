@@ -5,8 +5,7 @@
 }
 
 .heading{
-    padding: 5%;
-    margin: auto;
+    padding:7%    
 }
 
 .successGlyph{
@@ -17,4 +16,8 @@
 .errorGlyph{
     font-size: 300%;
     color:  #d9534f;
+}
+
+.buttons{
+    padding:7%
 }

@@ -24,13 +24,13 @@
                 Mauris felis nulla, blandit at est sed, bibendum tincidunt ex. In eu mollis dolor. Pellentesque pharetra eget nunc et varius. In accumsan iaculis venenatis. Etiam lacus eros, volutpat vel molestie et, interdum in justo. Nulla eget eleifend justo, id placerat lacus. Duis auctor mauris ac sagittis placerat. Quisque et lacus lectus. Morbi viverra nisl ac mauris hendrerit convallis et eu nisl. Suspendisse finibus ut mauris eget vestibulum.
             </div>
             <div class="col-md-4" id="mainInput">
-                <div class="heading">
-                     <h4>  Donate  </h4> 
+                <div class="heading text-xs-center">
+                     <h4> Donate  </h4> 
                 </div>
                 <!-- amount -->
-                <div class="amount" ng-show="pageStep === 'stepAmount'">
+                <div class="amount text-xs-center" ng-show="pageStep === 'stepAmount'">
                     <form>
-                        <div class="form-group row">
+                        <div class="form-group row"> 
                            <textarea class="form-control" id="donationReason" ng-model="reason" rows="6" placeholder=
                                      "If there is a certain portion of the budget you would like your donation to go to (sponsoring the dues of a sister in need, philanthropy, professionalism, etc), enter it here"></textarea>
                         </div>
@@ -43,7 +43,7 @@
                                </div>
                            </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row buttons">
                             <button class="btn btn-primary" ng-click="next()"> Next </button>
                         </div>
                     </form>
@@ -66,8 +66,10 @@
                           <input class="form-control" type="text" id="CVC" ng-model="CVC" data-stripe="cvc">
                       </div>
                        
-                       <button class="btn btn-primary" ng-click="back()"> Back </button>
-                       <button class="btn btn-primary" ng-click="next()"> Next </button>
+                      <div class="form-group row text-xs-center buttons">
+                           <button class="btn btn-primary" ng-click="back()"> Back </button>
+                           <button class="btn btn-primary" ng-click="next()"> Next </button>
+                      </div>
                    </form>
                </div>
                 <!-- billing address -->
@@ -99,27 +101,30 @@
                             <label for="zipcode" > Zipcode </label>
                             <input class="form-control" type="text" id="zipcode" ng-model="zipcode" data-stripe="zipcode">
                       </div>
-                     <div class="form-group row">
+                     <div class="form-group row text-xs-center buttons">
                             <button class="btn btn-primary" ng-click="back()"> Back </button>
                             <button class="btn btn-primary" ng-click="next()"> Next </button>
                      </div>
                  </form>
             </div>
             <!-- confirmation page -->
-           <div class="confirmation" ng-show="pageStep === 'stepConfirm'">
-                <p class="text-left"> <strong> Amount: </strong> {{amount}} </p> 
-                <p class="text-left"> {{name}} </p>
-                <p class="text-left"> {{hiddenCard()}} </p>
+           <div class="confirmation text-xs-center" ng-show="pageStep === 'stepConfirm'">
+                <p> <strong> Amount: </strong> {{amount}} </p> 
+                <p> {{name}} </p>
+                <p> {{hiddenCard()}} </p>
                <form>
-                   <button class="btn btn-primary" ng-click="back()"> Back </button>
-                   <button class="btn btn-primary" ng-click="next()"> Next </button>
+                   
+                  <div class="form-group row text-xs-center buttons">
+                       <button class="btn btn-primary" ng-click="back()"> Back </button>
+                       <button class="btn btn-primary" ng-click="next()"> Next </button>
+                  </div>
                </form>
            </div>
            
            <!-- success page -->
-           <div class="success" ng-show="pageStep === 'stepSuccess'">
-                <span class="successGlyph"> &#10004; </span>
-                <p class="text-left"> <strong> Thank you! </strong> </p> 
+           <div class="success text-xs-center" ng-show="pageStep === 'stepSuccess'">
+                <span class="successGlyph "> &#10004; </span>
+                <p> <strong> Thank you! </strong> </p> 
                <form>
                    <button class="btn btn-primary" ng-click="next()"> Done </button>
                </form>
@@ -127,9 +132,9 @@
                 
                 
           <!-- success page -->
-           <div class="error" ng-show="pageStep === 'stepError'">
-                <span class="errorGlyph"> 	&#x2716; </span>
-                <p class="text-left"> <strong> Card Declined </strong>  </p> 
+           <div class="error text-xs-center" ng-show="pageStep === 'stepError'">
+                <span class="errorGlyph"> &#x2716; </span>
+                <p> <strong> Card Declined </strong>  </p> 
                <form>
                    <button class="btn btn-primary" ng-click="back()"> Back </button>
                    <button class="btn btn-primary" ng-click="next()"> Cancel </button>
