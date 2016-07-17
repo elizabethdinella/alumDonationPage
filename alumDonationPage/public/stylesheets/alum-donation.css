@@ -8,3 +8,13 @@
     padding: 5%;
     margin: auto;
 }
+
+.successGlyph{
+    font-size: 300%;
+    color: #5cb85c;
+}
+
+.errorGlyph{
+    font-size: 300%;
+    color:  #d9534f;
+}

@@ -115,6 +115,27 @@
                    <button class="btn btn-primary" ng-click="next()"> Next </button>
                </form>
            </div>
+           
+           <!-- success page -->
+           <div class="success" ng-show="pageStep === 'stepSuccess'">
+                <span class="successGlyph"> &#10004; </span>
+                <p class="text-left"> <strong> Thank you! </strong> </p> 
+               <form>
+                   <button class="btn btn-primary" ng-click="next()"> Done </button>
+               </form>
+           </div>    
+                
+                
+          <!-- success page -->
+           <div class="error" ng-show="pageStep === 'stepError'">
+                <span class="errorGlyph"> 	&#x2716; </span>
+                <p class="text-left"> <strong> Card Declined </strong>  </p> 
+               <form>
+                   <button class="btn btn-primary" ng-click="back()"> Back </button>
+                   <button class="btn btn-primary" ng-click="next()"> Cancel </button>
+               </form>
+           </div>    
+                
         </div>
     </div>
     </div>

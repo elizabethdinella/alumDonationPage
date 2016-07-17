@@ -1,7 +1,7 @@
 angular.module('AlumDonation')
     .controller('AlumDonationCtrl', ['$scope', '$log', 'AlumDonationSvc', 'stripe', '$http', function ($scope, $log, alumDonationService, stripe, $http) {
     
-        $scope.pageStep = "stepAmount";
+        $scope.pageStep = "stepError";
         
         //amountStep
         $scope.amount;
@@ -42,6 +42,7 @@ angular.module('AlumDonation')
                      url: '/donate',
                      data: obj
                 });
+                $scope.pageStep = "stepSuccess";
             }else{
                 $log.log("error collecting card data");
 
@@ -69,6 +70,8 @@ angular.module('AlumDonation')
                     $scope.zipValid = getValidateClass($scope.zipcode && $scope.zipcode.length == 5);
                     return $scope.nameValid == true && $scope.addressValid == true && $scope.cityValid == true && $scope.stateValid == true && $scope.zipValid == true;
                 case "stepConfirm":
+                case "stepError":
+                case "stepSuccess":
                     return true;
             }
         }
@@ -98,6 +101,11 @@ angular.module('AlumDonation')
                     break;
                 case "stepConfirm":
                     $scope.submit();
+                    break;
+                case "stepError":
+                case "stepSuccess":
+                    $scope.clear();
+                    $scope.pageStep = "stepAmount";
             }
         }
         
@@ -111,9 +119,25 @@ angular.module('AlumDonation')
                     break;
                 case "stepConfirm":
                     $scope.pageStep = "stepAddress";
+                    break;
+                case "stepError":
+                    $scope.pageStep = "stepAddress";
             }
         }
         
+        $scope.clear = function(){
+            $scope.amount = "";
+            $scope.reason = "";
+            $scope.cardNumber = "";
+            $scope.expirationDate = "";
+            $scope.CVC = "";
+            $scope.name = "";
+            $scope.addressOne = "";
+            $scope.addressTwo = "";
+            $scope.city = "";
+            $scope.state = "";
+            $scope.zipcode = "";
+        }
         
         $scope.submit = function(){
             $log.log("submitting");
