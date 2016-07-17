@@ -25,6 +25,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.post("/donate", function(request, response) {
+    var charge = stripe.charges.create({
+            amount: request.body.amount,
+            currency: "usd",
+            source: request.body.token,
+            description: request.body.description
+    }, function(err, charge){
+       if(err){
+           console.log(err);
+           console.log("ERROR: card not charged");
+       }else{
+           console.log("card has been charged");
+       }
+    }
+   )
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -65,19 +82,5 @@ module.exports = app;
 var stripe = require("stripe")("sk_test_MenUTzBdo4tNC9BJzAVvmeMp");
 
 
-app.post("/donate", function(requset, response) {
-    var charge = stripe.charges.create({
-            amount: request.body.amount,
-            currency: "usd",
-            source: request.body.token,
-            description: request.body.description
-    }, function(err, charge){
-       if(err && err.type == "StripeCardError"){
-           console.log("card has been declined");
-       }else{
-           console.log("card has been charged");
-       }
-    }
-   )
-});
+
 

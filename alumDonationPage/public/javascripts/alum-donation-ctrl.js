@@ -1,5 +1,5 @@
 angular.module('AlumDonation')
-    .controller('AlumDonationCtrl', ['$scope', '$log', 'AlumDonationSvc', 'stripe', function ($scope, $log, alumDonationService, stripe) {
+    .controller('AlumDonationCtrl', ['$scope', '$log', 'AlumDonationSvc', 'stripe', '$http', function ($scope, $log, alumDonationService, stripe, $http) {
     
         $scope.pageStep = "stepAmount";
         
@@ -33,15 +33,15 @@ angular.module('AlumDonation')
         stripeResponseHandler = function(status, response){
             if(status == 200){
                 $log.log("collected card data successfully")
-                var token = response.id;
                 var obj = {};
                 obj.amount = $scope.amount;
                 obj.description = $scope.reason;
+                obj.token = response.id;
                 $http({
                      method: 'POST',
                      url: '/donate',
                      data: obj
-                })
+                });
             }else{
                 $log.log("error collecting card data");
 
