@@ -1,34 +1,8 @@
 angular.module('AlumDonation')
     .controller('AlumDonationCtrl', ['$scope', '$log', 'AlumDonationSvc', 'stripe', '$http', function ($scope, $log, alumDonationService, stripe, $http) {
     
-        $scope.pageStep = "stepError";
-        
-        //amountStep
-        $scope.amount;
-        $scope.amountValid;
-        $scope.reason;
-        
-        //cardStep
-        $scope.cardNumber;
-        $scope.cardValid;
-        $scope.expirationDate;
-        $scope.expValid;
-        $scope.CVC;
-        $scope.cvcValid;
-        
-        //addressStep 
-        $scope.name;
-        $scope.nameValid;
-        $scope.addressOne;
-        $scope.addressValid;
-        $scope.addressTwo;
-        $scope.city;
-        $scope.cityValid;
-        $scope.state;
-        $scope.stateValid;
+        $scope.pageStep = "stepAmount";
         $scope.states = usStates;
-        $scope.zipcode;
-        $scope.zipValid;
         
         stripeResponseHandler = function(status, response){
             if(status == 200){
@@ -41,8 +15,11 @@ angular.module('AlumDonation')
                      method: 'POST',
                      url: '/donate',
                      data: obj
+                }).success(function(results, status, headers, config){
+                    $scope.pageStep = "stepSuccess";
+                }).error(function(err, status){
+                    $scope.pageStep = "stepError";
                 });
-                $scope.pageStep = "stepSuccess";
             }else{
                 $log.log("error collecting card data");
 
@@ -77,7 +54,7 @@ angular.module('AlumDonation')
         }
         
         $scope.hiddenCard = function(){
-            if(!$scope.cardNumber){
+            if(!$scope.cardNumber || !($scope.pageStep == "stepConfirm")){
                 return;
             }
             return Array($scope.cardNumber.length-5).join("*") + $scope.cardNumber.substring($scope.cardNumber.length-4, $scope.cardNumber.length);
@@ -132,7 +109,7 @@ angular.module('AlumDonation')
             $scope.expirationDate = "";
             $scope.CVC = "";
             $scope.name = "";
-            $scope.addressOne = "";
+            $scope.address = "";
             $scope.addressTwo = "";
             $scope.city = "";
             $scope.state = "";
