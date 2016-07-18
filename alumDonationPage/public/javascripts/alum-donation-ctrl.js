@@ -122,7 +122,13 @@ angular.module('AlumDonation')
                 number: $scope.cardNumber,
                 cvc: $scope.cvc,
                 exp_month: $scope.expirationDate.getMonth()+1,
-                exp_year: $scope.expirationDate.getFullYear()
+                exp_year: $scope.expirationDate.getFullYear(),
+                name: $scope.name,
+                address_line1: $scope.address,
+                address_line2: $scope.addressTwo,
+                address_city: $scope.city,
+                address_state: $scope.state,
+                address_zip: $scope.zip,
             }, stripeResponseHandler);
         };
         
